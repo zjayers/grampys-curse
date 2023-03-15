@@ -8,6 +8,7 @@ namespace Game_Assets.Scripts.Utility
         public event UnityAction OnStartAttackAction = () => { };
         public event UnityAction OnStopAttackAction = () => { };
         public event UnityAction OnHitAttackAction = () => { };
+        public event UnityAction OnDeathAction = () => { };
 
         private void OnStartAttack()
         {
@@ -22,6 +23,11 @@ namespace Game_Assets.Scripts.Utility
         private void OnHit()
         {
             OnHitAttackAction.Invoke();
+        }
+
+        private void OnDeath()
+        {
+            OnDeathAction.Invoke();
         }
     }
 }

@@ -21,5 +21,20 @@ namespace Game_Assets.Scripts.Character
             health.HealthPoints = stats.health;
             combat.Damage = stats.damage;
         }
+
+        private void OnEnable()
+        {
+            health.OnDeathAction += HandleDeath;
+        }
+
+        private void OnDisable()
+        {
+            health.OnDeathAction -= HandleDeath;
+        }
+
+        private void HandleDeath()
+        {
+            Debug.Log("Player died.");
+        }
     }
 }

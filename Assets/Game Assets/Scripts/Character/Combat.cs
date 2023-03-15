@@ -8,6 +8,7 @@ namespace Game_Assets.Scripts.Character
     public class Combat : MonoBehaviour
     {
         private static readonly int AttackTrigger = Animator.StringToHash("attack");
+        private static readonly int DeathTrigger = Animator.StringToHash("death");
         private static readonly int WalkRunBlend = Animator.StringToHash("movement-walk-run-blend");
 
         private Animator _animator;
@@ -33,7 +34,7 @@ namespace Game_Assets.Scripts.Character
         {
             _event.OnStartAttackAction -= HandleStartAttack;
             _event.OnStopAttackAction -= HandleStopAttack;
-            _event.OnHitAttackAction -= HandleAttackHit;
+            _event.OnDeathAction -= HandleAttackHit;
         }
 
         private void OnDrawGizmos()
@@ -91,10 +92,22 @@ namespace Game_Assets.Scripts.Character
 
         public void HandleAttack(InputAction.CallbackContext context)
         {
-            if (!context.performed || IsAttacking) return;
+            if (!context.performed) return;
 
+            StartAttack();
+        }
+
+        public void StartAttack()
+        {
+            if (IsAttacking) return;
             _animator.SetFloat(WalkRunBlend, 0f);
             _animator.SetTrigger(AttackTrigger);
+        }
+
+        public void CancelAttack()
+        {
+            _animator.ResetTrigger(AttackTrigger);
+            IsAttacking = false;
         }
     }
 }

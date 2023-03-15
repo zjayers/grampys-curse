@@ -10,11 +10,12 @@ namespace Game_Assets.Scripts.Character
         public float attackRange = 0.75f;
         public CharacterStatsSo stats;
         public Health health;
-        public Combat combat;
         public AIAttackState attackState = new();
         public AIChaseState chaseState = new();
+        [NonSerialized] public Combat Combat;
 
         private AIBaseState currentState;
+        private readonly AIDeathState deathState = new();
         [NonSerialized] public float distanceFromPlayer;
         [NonSerialized] public Movement movementCmp;
         [NonSerialized] public Vector3 originalPosition;
@@ -33,7 +34,7 @@ namespace Game_Assets.Scripts.Character
             movementCmp = GetComponent<Movement>();
             patrolCmp = GetComponent<Patrol>();
             health = GetComponent<Health>();
-            combat = GetComponent<Combat>();
+            Combat = GetComponent<Combat>();
 
             originalPosition = transform.position;
         }
@@ -42,7 +43,7 @@ namespace Game_Assets.Scripts.Character
         {
             currentState.EnterState(this);
             health.HealthPoints = stats.health;
-            combat.Damage = stats.damage;
+            Combat.Damage = stats.damage;
         }
 
         private void Update()
@@ -50,6 +51,16 @@ namespace Game_Assets.Scripts.Character
             CalculateDistanceFromPlayer();
 
             currentState.UpdateState(this);
+        }
+
+        private void OnEnable()
+        {
+            health.OnDeathAction += HandleDeath;
+        }
+
+        private void OnDisable()
+        {
+            health.OnDeathAction -= HandleDeath;
         }
 
         private void OnDrawGizmos()
@@ -64,6 +75,12 @@ namespace Game_Assets.Scripts.Character
                 transform.position,
                 chaseRange
             );
+        }
+
+        private void HandleDeath()
+        {
+            SwitchState(deathState);
+            currentState.EnterState(this);
         }
 
         public void SwitchState(AIBaseState newState)

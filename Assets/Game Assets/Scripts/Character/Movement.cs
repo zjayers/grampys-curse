@@ -91,6 +91,7 @@ namespace Game_Assets.Scripts.Character
 
         public void StopMovingAgent()
         {
+            IsMoving = false;
             _agent.ResetPath();
         }
 

@@ -26,8 +26,7 @@ namespace Game_Assets.Scripts.Character
                 playerPosition
             );
 
-            var playerDirection = playerPosition - enemy.transform.position;
-            enemy.movementCmp.Rotate(playerDirection);
+            enemy.transform.LookAt(enemy.player.transform);
         }
     }
 }
