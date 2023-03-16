@@ -1,3 +1,4 @@
+using Game_Assets.Scripts.Utility;
 using UnityEngine;
 
 namespace Game_Assets.Scripts.Character
@@ -20,6 +21,7 @@ namespace Game_Assets.Scripts.Character
         {
             health.HealthPoints = stats.health;
             combat.Damage = stats.damage;
+            EventManager.DispatchPlayerHealthChange((int) health.HealthPoints);
         }
 
         private void OnEnable()

@@ -158,15 +158,6 @@
             "id": "6896f81e-bf04-4f6c-8e21-8017f406b65b",
             "actions": [
                 {
-                    "name": "Navigate",
-                    "type": "Button",
-                    "id": "f97f748a-5c9c-430c-98bb-5d67e6c48aff",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Interact",
                     "type": "Button",
                     "id": "788ae7e4-272a-496c-852c-a55f130fc5dc",
@@ -185,7 +176,30 @@
                     "initialStateCheck": false
                 }
             ],
-            "bindings": []
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "63331ef9-31c5-4dac-8355-1bf74c931a15",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "428c827f-e671-43cd-80b9-b53beebdd299",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Unpause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

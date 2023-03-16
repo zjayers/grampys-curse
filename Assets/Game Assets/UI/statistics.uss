@@ -1,0 +1,13 @@
+.stat-text {
+    -unity-font: url('project://database/Assets/Game%20Assets/Fonts/OdibeeSans-Regular.ttf?fileID=12800000&guid=94c91e133c0f88c438ef55128a1cd703&type=3#OdibeeSans-Regular');
+    -unity-font-definition: initial;
+    font-size: 30px;
+    -unity-font-style: bold;
+    color: rgb(255, 255, 255);
+    -unity-text-align: upper-center;
+    -unity-text-outline-width: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}

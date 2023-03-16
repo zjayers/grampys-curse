@@ -2,12 +2,15 @@ using System;
 using Game_Assets.Scripts.Utility;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 namespace Game_Assets.Scripts.Character
 {
     public class Health : MonoBehaviour
     {
         private static readonly int DeathTrigger = Animator.StringToHash("death");
+        [SerializeField] private int potionCount = 1;
+        [SerializeField] private int potionHealAmount = 15;
 
         // Get the animator component from children
         private Animator _animator;
@@ -15,11 +18,15 @@ namespace Game_Assets.Scripts.Character
         private bool _isDead;
         [NonSerialized] public float HealthPoints;
 
-
         private void Awake()
         {
             _animator = GetComponentInChildren<Animator>();
             _event = GetComponentInChildren<BubbleEvent>();
+        }
+
+        private void Start()
+        {
+            EventManager.DispatchPlayerPotionsChange(potionCount);
         }
 
         private void OnEnable()
@@ -34,6 +41,7 @@ namespace Game_Assets.Scripts.Character
 
         public event UnityAction OnDeathAction = () => { };
 
+
         private void HandleDeath()
         {
             Destroy(gameObject);
@@ -45,16 +53,32 @@ namespace Game_Assets.Scripts.Character
 
             HealthPoints = Mathf.Max(HealthPoints - damage, 0f);
 
+            if (CompareTag(Constants.PlayerTag))
+                EventManager.DispatchPlayerHealthChange((int) HealthPoints);
+
+
             if (HealthPoints <= 0)
                 Die();
+        }
+
+        public void Heal(InputAction.CallbackContext context)
+        {
+            if (!context.performed) return;
+            if (potionCount <= 0) return;
+            if (_isDead) return;
+
+            potionCount -= 1;
+            HealthPoints = Mathf.Min(HealthPoints + potionHealAmount, 100f);
+            EventManager.DispatchPlayerHealthChange((int) HealthPoints);
+            EventManager.DispatchPlayerPotionsChange(potionCount);
         }
 
 
         private void Die()
         {
-            OnDeathAction.Invoke();
             _isDead = true;
             _animator.SetTrigger(DeathTrigger);
+            OnDeathAction.Invoke();
         }
     }
 }
