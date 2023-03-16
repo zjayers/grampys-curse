@@ -10,12 +10,12 @@ namespace Game_Assets.Scripts.Character
         public float attackRange = 0.75f;
         public CharacterStatsSo stats;
         public Health health;
+        private readonly AIDeathState deathState = new();
         public AIAttackState attackState = new();
         public AIChaseState chaseState = new();
         [NonSerialized] public Combat Combat;
 
         private AIBaseState currentState;
-        private readonly AIDeathState deathState = new();
         [NonSerialized] public float distanceFromPlayer;
         [NonSerialized] public Movement movementCmp;
         [NonSerialized] public Vector3 originalPosition;
@@ -44,6 +44,11 @@ namespace Game_Assets.Scripts.Character
             currentState.EnterState(this);
             health.HealthPoints = stats.health;
             Combat.Damage = stats.damage;
+
+            if (health.HealthSlider == null) return;
+
+            health.HealthSlider.maxValue = stats.health;
+            health.HealthSlider.value = stats.health;
         }
 
         private void Update()

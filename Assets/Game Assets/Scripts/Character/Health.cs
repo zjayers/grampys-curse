@@ -3,6 +3,7 @@ using Game_Assets.Scripts.Utility;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 namespace Game_Assets.Scripts.Character
 {
@@ -17,11 +18,13 @@ namespace Game_Assets.Scripts.Character
         private BubbleEvent _event;
         private bool _isDead;
         [NonSerialized] public float HealthPoints;
+        [NonSerialized] public Slider HealthSlider;
 
         private void Awake()
         {
             _animator = GetComponentInChildren<Animator>();
             _event = GetComponentInChildren<BubbleEvent>();
+            HealthSlider = GetComponentInChildren<Slider>();
         }
 
         private void Start()
@@ -55,6 +58,8 @@ namespace Game_Assets.Scripts.Character
 
             if (CompareTag(Constants.PlayerTag))
                 EventManager.DispatchPlayerHealthChange((int) HealthPoints);
+            else if (HealthSlider != null)
+                HealthSlider.value = HealthPoints;
 
 
             if (HealthPoints <= 0)
