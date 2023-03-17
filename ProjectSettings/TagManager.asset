@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - weapon-axe
+  - weapon-sword
   layers:
   - Default
   - TransparentFX

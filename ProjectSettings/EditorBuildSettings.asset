@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/cursed-island.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/dungeon.unity
+    guid: 2b0eb8c6486a743d49ba702556117ba9
   m_configObjects: {}
