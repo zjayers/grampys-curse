@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Game%20Assets/UI/quest.uss?fileID=7433441132597879392&amp;guid=279d1e3ce70604706b1fff054b6f8188&amp;type=3#quest" />
+    <ui:GroupBox name="quest-ui" style="position: absolute; left: 0; bottom: 0; width: 100%; padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px; flex-direction: column; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0;">
+        <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="quest-text" style="-unity-font: url(&apos;project://database/Assets/Game%20Assets/Fonts/OdibeeSans-Regular.ttf?fileID=12800000&amp;guid=94c91e133c0f88c438ef55128a1cd703&amp;type=3#OdibeeSans-Regular&apos;); -unity-font-definition: initial; font-size: 40px; background-image: resource(&apos;yellow&apos;); -unity-background-image-tint-color: rgba(22, 6, 6, 0.81); -unity-background-scale-mode: stretch-to-fill; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; padding-left: 40px; padding-right: 40px; padding-top: 40px; padding-bottom: 40px; color: rgb(255, 192, 69); -unity-text-align: upper-left; -unity-font-style: normal; white-space: normal; text-overflow: ellipsis;" />
+        <ui:GroupBox style="flex-direction: row; justify-content: flex-end;">
+            <ui:Button text="E: Close" display-tooltip-when-elided="true" name="quest-next-button" class="quest-btn" />
+            <ui:GroupBox name="quest-choice-buttons" style="flex-direction: row; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0;" />
+        </ui:GroupBox>
+    </ui:GroupBox>
+</ui:UXML>

@@ -1,0 +1,25 @@
+.quest-btn {
+    background-color: rgb(231, 170, 74);
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    -unity-font: url('project://database/Assets/Game%20Assets/Fonts/OdibeeSans-Regular.ttf?fileID=12800000&guid=94c91e133c0f88c438ef55128a1cd703&type=3#OdibeeSans-Regular');
+    -unity-font-definition: initial;
+    font-size: 40px;
+    -unity-text-align: middle-center;
+    white-space: nowrap;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    color: rgb(44, 31, 30);
+    width: 200px;
+    align-self: flex-end;
+    -unity-text-outline-width: 0;
+    -unity-font-style: bold;
+}
