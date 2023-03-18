@@ -10,8 +10,8 @@ namespace Game_Assets.Scripts.Character
     public class Health : MonoBehaviour
     {
         private static readonly int DeathTrigger = Animator.StringToHash("death");
-        [SerializeField] private int potionCount = 1;
-        [SerializeField] private int potionHealAmount = 15;
+        [SerializeField] private int potionCount = 3;
+        [SerializeField] private int potionHealAmount = 25;
 
         // Get the animator component from children
         private Animator _animator;

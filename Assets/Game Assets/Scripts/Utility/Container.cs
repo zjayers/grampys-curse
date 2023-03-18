@@ -18,7 +18,6 @@ namespace Game_Assets.Scripts.Utility
         {
             _playerAxe = GameObject.FindGameObjectWithTag(AxeTag);
             _playerSword = GameObject.FindGameObjectWithTag(SwordTag);
-            _playerSword.SetActive(false);
         }
 
         private void OnTriggerEnter(Collider other)

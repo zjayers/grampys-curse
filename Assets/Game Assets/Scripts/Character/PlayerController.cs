@@ -5,6 +5,7 @@ namespace Game_Assets.Scripts.Character
 {
     public class PlayerController : MonoBehaviour
     {
+        private const string SwordTag = "weapon-sword";
         public CharacterStatsSo stats;
         public Health health;
         public Combat combat;
