@@ -37,7 +37,7 @@ namespace Game_Assets.Scripts.Character
 
         private void HandleDeath()
         {
-            Debug.Log("Player died.");
+            SceneTransition.LoadScene(0);
         }
     }
 }
